@@ -8,7 +8,22 @@ var app = new Vue({
       "budget" : "4950000",
       "spent" : "3456700",
       "projected_spend": "4740500",
-      "weekly_effort_target": 400
+      "weekly_effort_target": 400,
+      tasks:[
+        {
+        "id":"",
+        "title":"",
+        "type" : "",
+        "size" : "",
+        "team" : "",
+        "status": "",
+        "start_date": "",
+        "close_date": null,
+        "hours_worked":"",
+        "perc_complete":"",
+        "current_sprint" :"",
+        }
+      ]
 },
   computed: {
     days_left: function () {
@@ -32,22 +47,6 @@ var app = new Vue({
       return '$' + (val/1e6).toFixed(1) + 'M'
     }
   },
-  tasks:[
-    {
-    "id":"",
-    "title":"",
-    "type" : "",
-    "size" : "",
-    "team" : "",
-    "status": "",
-    "start_date": "",
-    "close_date": null,
-    "hours_worked":"",
-    "perc_complete":"",
-    "current_sprint" :""
-    }
-    ]
-},
 
   fetchTasks() {
     fetch("https://raw.githubusercontent.com/tag/iu-msis/dev/public/p1-tasks.json")
@@ -56,6 +55,6 @@ var app = new Vue({
     .catch( function(err){
       console.log('FETCH ERROR:');
       console.log(err);
-    }
+    })
   }
 })
