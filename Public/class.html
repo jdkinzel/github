@@ -27,11 +27,11 @@
           <div class="row">
             <div class="col">
               <h2>Due date</h2>
-              <div class="ban">{{target_date}}</div>
+              <div class="ban">{{pretty_target_date}}</div>
             </div>
             <div class="col">
               <h2>Days Remaining</h2>
-              <div class="ban">27</div>
+              <div class="ban">{{days_left}} days</div>
             </div>
           </div>
         </section>
@@ -44,11 +44,11 @@
       <div class="row">
         <section class="col placeholder" style="height:200px">
           <h2>Budget:</h2>
-          <div class="ban">{{budget}}</div>
+          <div class="ban">{{pretty_currency(budget)}}</div>
           <h2>Spent:</h2>
-          <div class="ban">{{spent}}</div>
+          <div class="ban">{{pretty_currency(spent)}}</div>
           <h2>Projected:</h2>
-          <div class="ban">{{projected_spend}}</div>
+          <div class="ban">{{pretty_currency(projected_spend)}}</div>
         </section>
         <div class="col placeholder">
           Burndown chart goes here.
@@ -74,7 +74,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="task in tasks">
+            <tr>
               <td>
                 {{task.title}}
               </td>
