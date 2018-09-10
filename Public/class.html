@@ -13,8 +13,11 @@
   </head>
   <body>
 
-    <div class="container-fluid">
-      <h1>Project Name</h1>
+    <main id="dashboard" class="container-fluid">
+      <h1>{{name}}</h1>
+      <p>
+        {{short_description}}
+      </p>
       <div class="row">
         <div class="col placeholder">
           Completion %
@@ -24,7 +27,7 @@
           <div class="row">
             <div class="col">
               <h2>Due date</h2>
-              <div class="ban">3 Nov 2018</div>
+              <div class="ban">{{target_date}}</div>
             </div>
             <div class="col">
               <h2>Days Remaining</h2>
@@ -39,9 +42,14 @@
       </div> <!-- end row 1, high-level summary information -->
 
       <div class="row">
-        <div class="col placeholder" style="height:200px">
-          Budget chart goes here.
-        </div>
+        <section class="col placeholder" style="height:200px">
+          <h2>Budget:</h2>
+          <div class="ban">{{budget}}</div>
+          <h2>Spent:</h2>
+          <div class="ban">{{spent}}</div>
+          <h2>Projected:</h2>
+          <div class="ban">{{projected_spend}}</div>
+        </section>
         <div class="col placeholder">
           Burndown chart goes here.
         </div>
@@ -92,10 +100,11 @@
         </table>
 
       </div> <!-- end row 3, tabular data -->
-    </div>
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="js/tablesort.min.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/tablesort.min.js"></script>
+
     <script>
     // http://tristen.ca/tablesort/demo/
       new Tablesort(document.getElementById('taskTable'));

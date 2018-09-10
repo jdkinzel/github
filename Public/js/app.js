@@ -12,7 +12,7 @@ var app = new Vue({
 }
 
   }
-);
+})
   tasks:[
     {
       "id": 1,
@@ -65,5 +65,5 @@ var app = new Vue({
       "hours_worked": 27,
       "perc_complete": 80,
       "current_sprint" : false
-    }
-];
+  }
+]
