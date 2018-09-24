@@ -1,15 +1,13 @@
 <?php
 
 
-$id = isset($_GET['id']) ? $_GET['id'] : 0;
+// get the taskId from URL params
+$taskId = intval($_GET['taskId'] ?? 0);
 
-$id = $_GET['id'] ?? 0;
+// Fetch the work from the // db
+$work = Work::findByTaskId($taskId);
 
-$arr = [
-  'first' => 'Tom',
-  'last' => 'Gregory'
-];
-
-$arr = ['one', 'two', 'three'];
+// convert to json and print
+echo json_encode($work);
 
 ?>
