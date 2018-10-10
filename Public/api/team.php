@@ -1,4 +1,3 @@
-
 <?php
 require '../../app/common.php';
 // 1. Go to the database and get all teams
