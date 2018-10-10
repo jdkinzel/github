@@ -1,3 +1,40 @@
+DROP TABLE IF EXISTS Teams;
+CREATE TABLE Teams (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  name VARCHAR(31) NOT NULL,
+  hourly_rate DECIMAL(6,2) NOT NULL
+);
+
+INSERT INTO Teams (id, name, hourly_rate)
+VALUES (1, 'California Dream', 90);
+INSERT INTO Teams (id, name, hourly_rate)
+VALUES (2, 'Noble Carrots', 100);
+INSERT INTO Teams (id, name, hourly_rate)
+VALUES (3, 'MS Why S', 80);
+INSERT INTO Teams (id, name, hourly_rate)
+VALUES (4, 'Luke\'s Parents', 90);
+
+
+DROP TABLE IF EXISTS Tasks;
+
+CREATE TABLE Tasks (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  title VARCHAR(64) NOT NULL,
+  type ENUM ('Epic', 'Story', 'Bug') DEFAULT 'Story',
+  size ENUM ('XS','S','M','L','XL','2XL'),
+  team_id INT,
+  open_date DATE NOT NULL,
+  close_date DATE DEFAULT NULL,
+  status ENUM('Open', 'Started', 'On Hold', 'Closed'),
+  hours_worked DECIMAL(5,1) DEFAULT 0,
+  perc_complete int DEFAULT 0,
+  current_sprint BOOLEAN
+);
+
+INSERT INTO Tasks (title, type, size, team_id, open_date, close_date, status, current_sprint)
+VALUES('Update unit tests', 'Story', 'L', 3, '2018-07-15', '2018-08-1', 'Closed', true);
+
+
 DROP TABLE IF EXISTS Work;
 
 CREATE TABLE Work (
@@ -10,21 +47,6 @@ CREATE TABLE Work (
   completion_estimate int NOT NULL CHECK(0 <= completion_estimate <= 100)
 );
 
-DROP TABLE IF EXISTS Teams;
-CREATE TABLE Teams (
-  team_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  name VARCHAR(31) NOT NULL,
-  hourly_rate DECIMAL(6,2) NOT NULL
-);
-
-INSERT INTO Teams (team_id, name, hourly_rate)
-VALUES (1, 'California Dream', 90);
-INSERT INTO Teams (team_id, name, hourly_rate)
-VALUES (2, 'Noble Carrots', 100);
-INSERT INTO Teams (team_id, name, hourly_rate)
-VALUES (3, 'MS Why S', 80);
-INSERT INTO Teams (team_id, name, hourly_rate)
-VALUES (4, 'Luke\'s Parents', 90);
 
 INSERT INTO Work (id, team_id, task_id, start_date, hours, completion_estimate)
 VALUES (1, 2, 1, '2018-07-29 08:30', 3, 10);
